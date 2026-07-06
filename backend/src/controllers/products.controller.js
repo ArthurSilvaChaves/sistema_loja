@@ -1,54 +1,107 @@
-let products = [
-    {id:1,name:"calcinha de velha"},
-    {id:2, name:"sapato preto"}
-]
+const prisma = require("../database/prisma");
 
 //GET function to /products
-function getAllProducts(req,res) {
-    res.json(products);
+async function getAllProducts(req,res) {
+    try{
+
+        const products = await prisma.product.findMany();
+
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({message:"erro ao buscar produtos."});
+    }
 }
 
 //GET function to /products/:id
-function getProductsById(req,res){
-    const id = Number(req.params.id);
+async function getProductsById(req,res){
+    try{
+        const id = Number(req.params.id);
 
-    const product = products.find(p => p.id === id);
+        const product = await prisma.product.findUnique({
+            where: { id }
+        });
+        
+        if(!product) { 
+            return res.status(404).json({
+                message:"produto nao encontrado."
+            });
+        }
 
-    if(!product){
-        return res.status(404).json({message:"Not Found Product"});
+        res.json(product)
+
+    } catch (error){
+        res.status(500).json({
+            message:"erro ao buscar produto."
+        });
     }
-
-    res.json(product);
 }
 
-function createProduct(req,res){
-    const { name } = req.body;
+async function createProduct(req,res){
+    try{
+        const { name, price } = req.body;
 
-    if(!name){
-        return res.status(404).json({message:"Name is Not-Null"});
+        const product = await prisma.product.create({
+            data: {
+                name,
+                price
+            }
+        });
+
+        res.status(201).json(product);
+
+    } catch (error) {
+        res.status(500).json({
+            message:"erro ao cadastrar produto."
+        });
     }
-
-    const newProduct = {
-        id:products.length + 1,
-        name
-    };
-
-    products.push(newProduct);
-
-    res.status(201).json(newProduct) // Request Sucessfull
 }
 
-function deleteProduct(req,res){
-    const id = Number(req.params.id);
+async function updateProduct(req,res) {
+    try{
+        const id = Number(req.params.id);
 
-    products = products.filter(p => p.id !== id);
+        const { name, price } = req.body;
 
-    res.json({message:"Product Removed"})
+        const product = await prisma.product.update({
+            where: { id },
+            data: {
+                name,
+                price
+            }
+        });
+
+        res.json(product)
+        
+    } catch (error) {
+        res.status(500).json({
+            message:"erro ao atualizar"
+        })
+    }
+
+    
+}
+
+async function deleteProduct(req,res){
+    try{
+        const id = Number(req.params.id);
+
+        await prisma.product.delete({
+            where: { id }
+        });
+        
+        res.status(204).send();
+    } catch (error){
+        res.status(500).json({
+            message:"erro ao excluir"
+        });
+    }
+
 }
 
 module.exports = {
     getAllProducts,
     getProductsById,
     createProduct,
+    updateProduct,
     deleteProduct
 };
