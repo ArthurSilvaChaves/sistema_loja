@@ -12,3 +12,11 @@ model Product {
   name  String
   price Float
 }
+
+model Employee {
+  id       Int    @id @default(autoincrement())
+  cpf      String @unique
+  name     String
+  telefone String
+  email    String
+}

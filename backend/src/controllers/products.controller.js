@@ -35,7 +35,7 @@ async function getProductsById(req,res){
         });
     }
 }
-
+//POST function for create a product
 async function createProduct(req,res){
     try{
         const { name, price } = req.body;
@@ -56,6 +56,7 @@ async function createProduct(req,res){
     }
 }
 
+//PUT function to update a product
 async function updateProduct(req,res) {
     try{
         const id = Number(req.params.id);
@@ -81,6 +82,7 @@ async function updateProduct(req,res) {
     
 }
 
+//DELETE function
 async function deleteProduct(req,res){
     try{
         const id = Number(req.params.id);
@@ -98,6 +100,7 @@ async function deleteProduct(req,res){
 
 }
 
+//exports to route
 module.exports = {
     getAllProducts,
     getProductsById,
