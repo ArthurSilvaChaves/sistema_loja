@@ -79,7 +79,6 @@ async function updateProduct(req,res) {
         })
     }
 
-    
 }
 
 //DELETE function
