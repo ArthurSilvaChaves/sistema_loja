@@ -37,12 +37,13 @@ async function getProductsById(req,res){
 }
 //POST function for create a product
 async function createProduct(req,res){
-    const { name, price } = req.body;
+    const { name, price, inventory } = req.body;
 
     const product = await prisma.product.create({
         data: {
             name,
-        price
+            price,
+            inventory
         }
     });
 
@@ -56,13 +57,14 @@ async function updateProduct(req,res) {
     try{
         const id = Number(req.params.id);
 
-        const { name, price } = req.body;
+        const { name, price, inventory } = req.body;
 
         const product = await prisma.product.update({
             where: { id },
             data: {
                 name,
-                price
+                price,
+                inventory
             }
         });
 

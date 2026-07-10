@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import api from "../../services/api";
 import type { Product } from "../../types/product";
 
@@ -38,6 +38,7 @@ function Caixa(){
                 {produtos.map((produto) => (
                     <div key={produto.id} style={{border:'1px solid #ddd', padding:'15px', borderRadius:'8px'}}>
                         <h2>{produto.name}</h2>
+                        <p>estoque: {produto.inventory} </p>
                         <p>preco: {produto.price}</p>
                     </div>
                 ))}
