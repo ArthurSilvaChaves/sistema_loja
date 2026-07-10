@@ -37,23 +37,18 @@ async function getProductsById(req,res){
 }
 //POST function for create a product
 async function createProduct(req,res){
-    try{
-        const { name, price } = req.body;
+    const { name, price } = req.body;
 
-        const product = await prisma.product.create({
-            data: {
-                name,
-                price
-            }
-        });
+    const product = await prisma.product.create({
+        data: {
+            name,
+        price
+        }
+    });
 
-        res.status(201).json(product);
+    res.status(201).json(product);
 
-    } catch (error) {
-        res.status(500).json({
-            message:"erro ao cadastrar produto."
-        });
-    }
+
 }
 
 //PUT function to update a product
