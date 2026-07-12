@@ -39,15 +39,22 @@ async function getProductsById(req,res){
 async function createProduct(req,res){
     const { name, price, inventory } = req.body;
 
+    const precoNum = parseFloat(price);
+    const estoqueNum = parseInt(inventory);
+
+    if(!name || isNaN(precoNum) || isNaN(estoqueNum)) {
+        return res.status(400).json({error: "dados invalidos: alguns valores devem ser numericos " })
+    }
+
     const product = await prisma.product.create({
         data: {
             name,
-            price,
-            inventory
+            price: precoNum,
+            inventory: estoqueNum
         }
     });
 
-    res.status(201).json(product);
+    return res.status(201).json(product);
 
 
 }

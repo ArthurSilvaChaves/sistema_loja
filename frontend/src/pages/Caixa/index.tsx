@@ -1,8 +1,11 @@
 import { useEffect, useState} from "react";
 import api from "../../services/api";
 import type { Product } from "../../types/product";
+import { useAuth } from "../../context/AuthContext";
 
-function Caixa(){
+export const Caixa: React.FC = () => {
+    const { logout } = useAuth();
+
     //1.
     const [produtos, setProdutos] = useState<Product[]>([])
     const [carregando, setCarregando] = useState<boolean>(true)
@@ -34,19 +37,16 @@ function Caixa(){
         <div style={{padding: '20px', border:'2px solid #ccc'}}>
             <h1>Sistema generico de PDV - Tela de Caixa</h1>
             
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px'}}>
-                {produtos.map((produto) => (
-                    <div key={produto.id} style={{border:'1px solid #ddd', padding:'15px', borderRadius:'8px'}}>
-                        <h2>{produto.name}</h2>
-                        <p>estoque: {produto.inventory} </p>
-                        <p>preco: {produto.price}</p>
-                    </div>
-                ))}
-            </div>
+            <button
+            onClick={ logout }>
+                deslogar
+            </button>
+
 
             {produtos.length === 0 && <p>Nenhum produto no banco</p>}
         </div>
     );
 }
+
 
 export default Caixa;

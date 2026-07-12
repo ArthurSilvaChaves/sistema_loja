@@ -1,15 +1,25 @@
+import React from "react";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { Login } from './components/login';
+import Dashboard from "./pages/dashboard/dashboard";
 
-import Caixa from "./pages/Caixa/index"
+const MainContent: React.FC = () => {
+  const { isAuthenticated, loading } = useAuth();
 
-function App() {
+  if (loading) return <div>carregando...</div>;
+
+  if (!isAuthenticated) {
+    return <Login />;
+  }
+
+  return <Dashboard />
+  
+};
+
+export default function App() {
   return (
-    <div>
-      <header>
-          <h1>Bem Vindo a <u><i>LOJA</i></u></h1>
-      </header>
-      <Caixa />
-    </div>
+    <AuthProvider>
+      <MainContent />
+    </AuthProvider>
   )
 }
-
-export default App
