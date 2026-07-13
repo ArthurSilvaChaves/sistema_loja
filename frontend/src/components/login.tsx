@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext"
 
 export const Login: React.FC = () => {  
     const { login } = useAuth();
@@ -22,7 +22,7 @@ export const Login: React.FC = () => {
             const dados = await response.json();
 
             if(response.ok) {
-                login(dados.token)
+                login(dados.token,dados.employee)
             } else {
                 setError(dados.error || 'erro no login');
             }
