@@ -1,14 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Login } from './components/login';
 import Dashboard from "./pages/dashboard/dashboard";
 import Caixa from "./pages/Caixa/caixa";
-
-type Tela = 'dashboard' | 'caixa'
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 const MainContent: React.FC = () => {
   const { isAuthenticated, loading } = useAuth();
-  const [telaAtual, setTelaAtual] = useState<Tela>('dashboard');
 
   if (loading) return <div>carregando...</div>;
 
@@ -17,16 +15,17 @@ const MainContent: React.FC = () => {
   }
 
   return (
-    <div>
-      <nav style={{display: 'flex', gap: '10px',padding:'10px',borderBottom: '1px solid #ddd'}}>
-        <button onClick={() => setTelaAtual('dashboard')}>Dashboard</button>
-        <button onClick={() => setTelaAtual('caixa')}>Caixa</button>
+    <BrowserRouter>
+      <nav style={{ display: 'flex', gap: '10px', padding: '10px'}}>
+        <Link to="/">Dashboard</Link>
+        <Link to="/caixa">Caixa</Link>
       </nav>
-
-      {telaAtual === 'dashboard' && <Dashboard/ >}
-      {telaAtual == 'caixa' && <Caixa />}
-    </div>
-  )
+      <Routes>
+        <Route path="/" element={<Dashboard />}/>
+        <Route path="/caixa" element={<Caixa />} />
+      </Routes>
+    </BrowserRouter>
+  );
   
 };
 

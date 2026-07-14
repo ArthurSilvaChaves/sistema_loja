@@ -1,0 +1,97 @@
+body{
+    background-color: #6b6b6b;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.container {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 1cap;
+    border: solid #ddd 2px;
+}
+
+.form h3{
+    font-size: 2rem;
+}
+
+.form input{
+    font-size: 1.3rem;
+    text-align: center;
+    border-radius: 1cap;
+    padding: 2px;
+}
+
+
+.filtro {
+    border: #000000 2px solid;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+    border-radius: 1cap;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+}
+
+.filtroInput {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+
+.filtroInput input {
+    font-size: 1.3rem;
+    text-align: center;
+    border-radius: 1cap;
+}
+
+.produtos{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: #ddd 2px solid;
+    margin: 10px;
+    gap: 10px;
+}
+
+.botao {
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    background: #ddd;
+    transition-duration: 250ms;
+    border-radius: 1cap;
+    width: 100px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.botao:hover {
+    background-color: #bab0ba;
+}
+
+.botao:active {
+    background-color: #9b929b;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState} from "react";
 import api from "../../services/api";
 import type { Product } from "../../types/product";
 import { useAuth } from "../../context/AuthContext";
+import styles from "./dashboard.module.css"
 
 export const Dashboard: React.FC = () => {
     const { logout } = useAuth();
@@ -81,8 +82,8 @@ export const Dashboard: React.FC = () => {
     }
 
     return (
-        <div style={{padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px'}}>
+        <div className={styles.cotainer}>
+            <div>
                 <h1>Sistema PDV generico - Tela de Dashboard</h1>
                 <button
                 onClick={logout}
@@ -91,17 +92,17 @@ export const Dashboard: React.FC = () => {
                 </button>
             </div>
 
-            <form onSubmit={handleAddProducts}>
+            <form onSubmit={handleAddProducts} className={styles.form}>
                 <h3>Cadastrar Produtos</h3>
                 <input type="text" placeholder="Nome" value={novoNome} onChange={e => setNovoNome(e.target.value)} required/>
                 <input type="number" placeholder="Preço" value={novoPreco} onChange={e => setNovoPreco(e.target.value)} required />
                 <input type="number" placeholder="Estoque" value={novoEstoque} onChange={e => setNovoEstoque(e.target.value)} required/>
 
-                <button type="submit">Adicionar</button>
+                <button type="submit" className={styles.botao}>Adicionar</button>
             </form>
 
             {/* filtro <div> */}
-            <div>
+            <div className={styles.filtroInput}>
                 <input 
                 type="text"
                 placeholder="filtrar por nome... "
@@ -112,15 +113,17 @@ export const Dashboard: React.FC = () => {
 
             {/* Lista de produtos*/}
 
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px'}}>
+            <div className={styles.filtro}>
                 {filteredProcucts.map((product) => (
-                    <div key={product.id} style={{border: '1px solid #ddd', padding: '15px', borderRadius: '8px', position: 'relative'}}>
+                    <div key={product.id} className={styles.produtos}>
                         <h2>{product.name}</h2>
                         <p>estoque : {product.inventory}</p>
                         <p>Preço: R$ {product.price}</p>
 
                         <button
-                        onClick={() => handleDeleteProduct(product.id)}>
+                        onClick={() => handleDeleteProduct(product.id)}
+                        className={styles.botao}
+                        >
                             Excluir
                         </button>
                     </div>
