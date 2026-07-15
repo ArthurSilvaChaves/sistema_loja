@@ -112,8 +112,8 @@ export const Dashboard: React.FC = () => {
             </div>
 
             {/* Lista de produtos*/}
-
-            <div className={styles.filtro}>
+            <div className={styles.filtroParent}>
+                <div className={styles.filtro}>
                 {filteredProcucts.map((product) => (
                     <div key={product.id} className={styles.produtos}>
                         <h2>{product.name}</h2>
@@ -124,11 +124,13 @@ export const Dashboard: React.FC = () => {
                         onClick={() => handleDeleteProduct(product.id)}
                         className={styles.botao}
                         >
-                            Excluir
+                        Excluir
                         </button>
                     </div>
-                ))}
+                    ))}
+                </div>
             </div>
+            
             {filteredProcucts.length === 0 && <p>Nenhum produto encontrado</p>}
         </div>  
     );

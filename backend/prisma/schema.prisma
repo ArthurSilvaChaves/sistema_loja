@@ -12,6 +12,8 @@ model Product {
   name      String
   price     Float
   inventory Int    @default(0)
+
+  saleItems SaleItem[]
 }
 
 model Employee {
@@ -20,4 +22,30 @@ model Employee {
   name     String
   telefone String
   email    String
+
+  sales    Sale[]
+}
+
+model Sale {
+  id            Int      @id @default(autoincrement())
+  data          DateTime @default(now())
+  total         Float
+  paymentMethod String
+
+  employeeId    Int
+  employee      Employee   @relation(fields: [employeeId], references: [id])
+
+  items         SaleItem[]
+}
+
+model SaleItem {
+  id         Int   @id @default(autoincrement())
+  quantity   Int
+  unitPrice  Float
+
+  saleId     Int
+  sale       Sale    @relation(fields: [saleId], references: [id])
+
+  productId  Int
+  product    Product @relation(fields: [productId], references: [id])
 }
