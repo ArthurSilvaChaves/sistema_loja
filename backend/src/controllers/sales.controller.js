@@ -1,5 +1,3 @@
-
-const { create } = require("node:domain");
 const prisma = require("../database/prisma")
 
 async function createSale(req, res) {
@@ -69,4 +67,71 @@ async function createSale(req, res) {
   }
 }
 
-module.exports = createSale;
+async function listSales(req,res) {
+  const { startDate, endDate} = req.query;
+
+  try {
+    const where = {};
+
+    if (startDate || endDate) {
+      where.data = {};
+      if (startDate) where.data.gte = new Date(startDate);
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        where.data.lte = end;
+      }
+    }
+
+    const sales = await prisma.sale.findMany({
+      where,
+      include: {
+        employee: { select: { id:true, name:true } },
+        items: {
+          include: {
+            product : { select: {id:true,name:true}},
+          },
+        },
+      },
+      orderBy: {data:"desc"}
+    });
+
+    res.status(200).json(sales);
+  } catch (error) {
+    res.status(400).json({error:error.message});
+  }
+}
+
+async function getProductSalesStats(req,res){
+  try {
+    const stats = await prisma.saleItem.groupBy({
+      by: ["productId"],
+      _sum:{ quantity:true },
+      _count: {id:true }
+    });
+
+    const productIds = stats.map((s) => s.productId);
+    const products = await prisma.product.findMany({
+      where: { id:{ in:productIds} },
+      select: { id:true, name:true},
+    });
+
+    const result = stats
+    .map((s) => {
+      const product = products.find((p) => p.id === s.productId);
+      return {
+        productId:s.productId,
+        productName:product?.name ?? "produto removido",
+        totalQuantity: s._sum.quantity,
+        salesCount:s._count.id,
+      };
+    })
+    .sort((a,b) => b.totalQuantity - a.totalQuantity);
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({error:error.message});
+  }
+}
+
+module.exports = { createSale,listSales,getProductSalesStats };

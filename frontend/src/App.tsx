@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Login } from './components/login';
 import Dashboard from "./pages/dashboard/dashboard";
 import Caixa from "./pages/Caixa/caixa";
+
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 const MainContent: React.FC = () => {
