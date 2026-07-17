@@ -134,4 +134,4 @@ async function getProductSalesStats(req,res){
   }
 }
 
-module.exports = { createSale,listSales,getProductSalesStats };
+module.exports = { createSale, listSales, getProductSalesStats };

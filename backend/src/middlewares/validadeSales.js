@@ -1,5 +1,3 @@
-const { start } = require("node:repl");
-
 function validateCreateSale(req,res,next) {
     const { employeeId, paymentMethod, items } = req.body
 
