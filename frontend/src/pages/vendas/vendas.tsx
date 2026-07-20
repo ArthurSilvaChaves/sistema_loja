@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import type { SaleResponse } from "../../types/venda";
-// import styles from "./vendas.module.css";
+import styles from "./vendas.module.css";
 
 export const Vendas: React.FC = () => {
     const [sales,setSales] = useState<SaleResponse[]>([]);
@@ -54,7 +54,7 @@ export const Vendas: React.FC = () => {
     }
 
     return ( 
-        <div>
+        <div className={styles.container}>
             <h1>Histórico de Vendas</h1>
 
             <form onSubmit={handleFiltrar}>
@@ -102,7 +102,7 @@ export const Vendas: React.FC = () => {
                             </tr>
 
                             {expandedId === sale.id && (
-                                <tr>
+                                <tr className={styles.expandedRow}>
                                     <td colSpan={4}>
                                         <div>
                                             <strong>Itens Vendidos: </strong>

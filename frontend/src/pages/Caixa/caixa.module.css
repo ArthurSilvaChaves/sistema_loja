@@ -1,0 +1,346 @@
+/* caixa.module.css */
+
+.parent {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    color: #1a2a3a;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e1edf9 100%);
+    min-height: 100vh;
+}
+
+h1 {
+    color: #1a3a5c;
+    font-weight: 300;
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.5px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90d9, #6db3f2);
+    margin-top: 0.5rem;
+}
+
+p {
+    color: #3a5a7a;
+    margin: 0.5rem 0 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* Seleção de produto */
+.productSelection {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.08);
+    margin-bottom: 2rem;
+}
+
+.productSelection select {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: white;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.productSelection select:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.productSelection input {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: white;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    width: 70px;
+    transition: all 0.2s;
+}
+
+.productSelection input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.productSelection button {
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, #4a90d9, #5ba3e8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.productSelection button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 144, 217, 0.3);
+    background: linear-gradient(135deg, #3a80c9, #4a93d8);
+}
+
+.productSelection button:active {
+    transform: translateY(0);
+}
+
+h3 {
+    color: #1a3a5c;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.8rem 0;
+    letter-spacing: -0.3px;
+}
+
+/* Carrinho */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    border-left: 3px solid #4a90d9;
+    transition: all 0.2s;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+}
+
+ul li:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateX(2px);
+}
+
+ul li button {
+    background: #e74c6f;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+ul li button:hover {
+    background: #c0395b;
+    transform: scale(1.05);
+}
+
+/* Pagamento */
+.pagamento {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    margin: 1rem 0;
+}
+
+.pagamento label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #1a3a5c;
+    font-weight: 500;
+}
+
+.pagamento select {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: white;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagamento select:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+/* Desconto */
+div > label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1a3a5c;
+    font-weight: 500;
+}
+
+div > label input {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: white;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+div > label input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+/* Totais */
+.totais {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.2);
+    margin: 1.5rem 0;
+}
+
+.totais p {
+    margin: 0.3rem 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0;
+}
+
+.totais p:last-child {
+    font-size: 1.2rem;
+    border-top: 2px solid rgba(74, 144, 217, 0.2);
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+}
+
+.totais p:last-child strong {
+    color: #2a6aa9;
+}
+
+/* Botão finalizar */
+button[onClick="finalizarVenda"] {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, #2a7a4a, #3a9a5a);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+}
+
+button[onClick="finalizarVenda"]:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 122, 74, 0.3);
+    background: linear-gradient(135deg, #1a6a3a, #2a8a4a);
+}
+
+button[onClick="finalizarVenda"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Histórico de vendas */
+.vendas {
+    margin-top: 0.5rem;
+}
+
+.vendas li {
+    border-left-color: #6db3f2;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.vendas li:hover {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+/* Mensagens de carregamento e vazio */
+.parent > div:first-child,
+.parent > p:first-of-type {
+    text-align: center;
+    padding: 3rem 0;
+    color: #3a6a9a;
+}
+
+.parent > p:first-of-type {
+    padding: 1rem 0;
+    color: #5a7a9a;
+    font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .parent {
+        padding: 1rem;
+    }
+
+    .productSelection {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    .productSelection select {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .productSelection input {
+        width: 100%;
+    }
+
+    .productSelection button {
+        width: 100%;
+    }
+
+    .pagamento label {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    ul li {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    ul li button {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}

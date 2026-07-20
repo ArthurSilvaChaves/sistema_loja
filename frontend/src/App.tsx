@@ -4,8 +4,8 @@ import { Login } from './components/login';
 import Dashboard from "./pages/dashboard/dashboard";
 import Caixa from "./pages/Caixa/caixa";
 import Vendas from "./pages/vendas/vendas"
-
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import styles from "./app.module.css"
 
 const MainContent: React.FC = () => {
   const { isAuthenticated, loading } = useAuth();
@@ -18,7 +18,7 @@ const MainContent: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <nav style={{ display: 'flex', gap: '10px', padding: '10px'}}>
+      <nav className={styles.navbar}>
         <Link to="/">Dashboard</Link>
         <Link to="/caixa">Caixa</Link>
         <Link to="/vendas">Vendas</Link>

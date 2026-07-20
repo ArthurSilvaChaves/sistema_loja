@@ -5,7 +5,7 @@ function validateCreateSale(req,res,next) {
         return res.status(400).json({error:"id do funcionario obrigatorio!"});
     }
 
-    if(!paymentMethod || paymentMethod !== "string") {
+    if(!paymentMethod ||typeof paymentMethod !== "string") {
         return res.status(400).json({error:"metodo de pagamento obrigatorio"});
     }
 
@@ -14,7 +14,7 @@ function validateCreateSale(req,res,next) {
     }
 
     for(const item of items) {
-        if (!item.productId || item.quantity) {
+        if (!item.productId || !item.quantity) {
             return res.status(400).json({error:"id do produto e quantidade sao obrigatorios"})
         }
 

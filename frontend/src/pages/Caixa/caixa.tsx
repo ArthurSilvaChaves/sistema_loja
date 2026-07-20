@@ -3,6 +3,7 @@ import api from "../../services/api";
 import type { Product } from "../../types/product";
 import type { ItemVenda, Venda, FormaPagamento } from "../../types/sale";
 import { useAuth } from "../../context/AuthContext";
+import styles from "./caixa.module.css";
 
 export const Caixa: React.FC = () => {
     const { user } = useAuth();
@@ -136,12 +137,12 @@ export const Caixa: React.FC = () => {
     }
 
     return (
-        <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
+        <div className={styles.parent}>
             <h1>Caixa</h1>
             <p>Operador: {user?.name ?? 'Desconhecido'}</p>
 
             {/* seleção de produto */}
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+            <div className={styles.productSelection}>
                 <select value={produtoSelecionadoId} onChange={e => setProdutoSelecionadoId(e.target.value)}>
                     <option value="">Selecione um produto</option>
                     {products.map(p => (
@@ -175,7 +176,7 @@ export const Caixa: React.FC = () => {
             </ul>
 
             {/* pagamento */}
-            <div style={{ marginTop: '20px' }}>
+            <div className={styles.pagamento}>
                 <label>
                     Forma de pagamento:{' '}
                     <select value={formaPagamento} onChange={e => setFormaPagamento(e.target.value as FormaPagamento)}>
@@ -203,7 +204,7 @@ export const Caixa: React.FC = () => {
             )}
 
             {/* totais */}
-            <div style={{ marginTop: '20px', fontSize: '1.1em' }}>
+            <div className={styles.totais}>
                 <p>Subtotal: R$ {totalBruto.toFixed(2)}</p>
                 {descontoPermitido && <p>Desconto: - R$ {descontoValor.toFixed(2)}</p>}
                 <p><strong>Total: R$ {totalFinal.toFixed(2)}</strong></p>
@@ -216,7 +217,7 @@ export const Caixa: React.FC = () => {
             {/* histórico local */}
             <h3 style={{ marginTop: '40px' }}>Vendas realizadas (sessão atual)</h3>
             {vendas.length === 0 && <p>Nenhuma venda registrada ainda</p>}
-            <ul>
+            <ul className={styles.vendas}>
                 {vendas.map(v => (
                     <li key={v.id}>
                         {new Date(v.dataHora).toLocaleString('pt-BR')} — {v.funcionario} — R$ {v.totalFinal.toFixed(2)} ({v.formaPagamento})

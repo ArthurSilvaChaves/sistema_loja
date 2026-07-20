@@ -1,0 +1,388 @@
+/* vendas.module.css */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    color: #1a2a3a;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e1edf9 100%);
+    min-height: 100vh;
+}
+
+h1 {
+    color: #1a3a5c;
+    font-weight: 300;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90d9, #6db3f2);
+    margin-top: 0.5rem;
+}
+
+/* Formulário de filtro */
+form {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.08);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: #1a3a5c;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+form label span {
+    color: #3a5a7a;
+}
+
+form input[type="date"] {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: white;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    min-width: 160px;
+}
+
+form input[type="date"]:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+form button {
+    padding: 0.6rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+form button[type="submit"] {
+    background: linear-gradient(135deg, #4a90d9, #5ba3e8);
+    color: white;
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 217, 0.3);
+    background: linear-gradient(135deg, #3a80c9, #4a93d8);
+}
+
+form button[type="button"] {
+    background: rgba(255, 255, 255, 0.8);
+    color: #3a5a7a;
+    border: 1px solid #b8d0e8;
+}
+
+form button[type="button"]:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #4a90d9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.15);
+}
+
+form button:active {
+    transform: translateY(0);
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.08);
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead {
+    background: linear-gradient(135deg, rgba(74, 144, 217, 0.1), rgba(109, 179, 242, 0.1));
+}
+
+thead th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    color: #1a3a5c;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid rgba(74, 144, 217, 0.2);
+}
+
+thead th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+thead th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+tbody tr {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+tbody tr:not(:last-child) {
+    border-bottom: 1px solid rgba(74, 144, 217, 0.08);
+}
+
+tbody tr:hover {
+    background: rgba(74, 144, 217, 0.05);
+}
+
+tbody td {
+    padding: 0.9rem 1.2rem;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+tbody td:last-child {
+    font-weight: 600;
+    color: #2a6aa9;
+}
+
+/* Linha expandida */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr.expandedRow {
+    background: rgba(74, 144, 217, 0.03);
+}
+
+tbody tr.expandedRow td {
+    padding: 0;
+}
+
+tbody tr.expandedRow > td > div {
+    padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+    background: rgba(74, 144, 217, 0.03);
+    border-top: 2px solid rgba(74, 144, 217, 0.1);
+}
+
+tbody tr.expandedRow strong {
+    color: #1a3a5c;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+tbody tr.expandedRow ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.5rem;
+}
+
+tbody tr.expandedRow ul li {
+    padding: 0.5rem 0.8rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+    border-left: 3px solid #4a90d9;
+    color: #1a3a5c;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+tbody tr.expandedRow ul li:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(2px);
+}
+
+/* Indicador de expansão */
+tbody td:first-child {
+    position: relative;
+}
+
+tbody td:first-child::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 0.7rem;
+    color: #4a90d9;
+    transition: all 0.3s;
+}
+
+tbody tr:not(.expandedRow) td:first-child::before {
+    transform: rotate(0deg);
+}
+
+tbody tr.expandedRow td:first-child::before {
+    transform: rotate(90deg);
+}
+
+/* Mensagem de nenhuma venda */
+.container > p:last-child {
+    text-align: center;
+    color: #5a7a9a;
+    font-style: italic;
+    padding: 3rem 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    border: 2px dashed rgba(74, 144, 217, 0.2);
+    margin-top: 1.5rem;
+}
+
+/* Loading */
+.container > div:first-child {
+    text-align: center;
+    padding: 4rem 0;
+    color: #3a6a9a;
+    font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    form label {
+        width: 100%;
+    }
+
+    form input[type="date"] {
+        width: 100%;
+        min-width: unset;
+    }
+
+    form button {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    thead th,
+    tbody td {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    tbody tr.expandedRow ul {
+        grid-template-columns: 1fr;
+    }
+
+    tbody tr.expandedRow ul li {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    tbody td:first-child::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    thead th,
+    tbody td {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    tbody tr.expandedRow > td > div {
+        padding: 0.8rem;
+    }
+
+    tbody tr.expandedRow ul li {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animações suaves */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+    }
+}
+
+tbody tr.expandedRow > td > div {
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e1edf9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a90d9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a80c9;
+}
+
+/* Melhorias para acessibilidade */
+tbody tr:focus {
+    outline: 2px solid #4a90d9;
+    outline-offset: -2px;
+}
+
+/* Efeito de transição suave para o hover da tabela */
+tbody tr {
+    transition: background-color 0.2s ease;
+}

@@ -1,86 +1,351 @@
+/* dashboard.module.css */
+
 .container {
-    padding: 24px;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    color: #1a2a3a;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e1edf9 100%);
+    min-height: 100vh;
 }
 
-.header {
+/* Header */
+.container > div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    padding: 1rem 0 1.5rem 0;
+    border-bottom: 2px solid rgba(74, 144, 217, 0.15);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 1cap;
-    border: solid #ddd 2px;
-}
-
-.form h3{
+.container > div:first-child h1 {
+    color: #1a3a5c;
+    font-weight: 300;
     font-size: 2rem;
+    margin: 0;
+    letter-spacing: -0.5px;
 }
 
-.form input{
-    font-size: 1.3rem;
-    text-align: center;
-    border-radius: 1cap;
-    padding: 2px;
+.container > div:first-child h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90d9, #6db3f2);
+    margin-top: 0.3rem;
 }
 
-
-.filtro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.filtroInput {
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 2px;
-}
-
-.filtroInput input {
-    font-size: 1.3rem;
-    text-align: center;
-    border-radius: 1cap;
-}
-
-.produtos{
-    width: 100%;
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    flex-direction: column;
-    border: #ddd 2px solid;
-    margin: 10px;
-    gap: 10px;
-}
-
-.botao {
-    cursor: pointer;
+.container > div:first-child button {
+    padding: 0.6rem 1.8rem;
+    background: linear-gradient(135deg, #e74c6f, #c0395b);
+    color: white;
     border: none;
-    padding: 10px;
-    background: #ddd;
-    transition-duration: 250ms;
-    border-radius: 1cap;
-    width: 100px;
-    text-align: center;
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.container > div:first-child button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 111, 0.3);
+    background: linear-gradient(135deg, #d63a5e, #b03252);
+}
+
+.container > div:first-child button:active {
+    transform: translateY(0);
+}
+
+/* Formulário */
+.form {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.08);
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.form h3 {
+    grid-column: 1 / -1;
+    color: #1a3a5c;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.3px;
+}
+
+.form input {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: white;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.form input::placeholder {
+    color: #8aaac9;
+}
+
+/* Botão do formulário */
+.botao {
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(135deg, #4a90d9, #5ba3e8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .botao:hover {
-    background-color: #bab0ba;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 217, 0.3);
+    background: linear-gradient(135deg, #3a80c9, #4a93d8);
 }
 
 .botao:active {
-    background-color: #9b929b;
+    transform: translateY(0);
+}
+
+/* Botão excluir (sobrescreve o estilo padrão) */
+.produtos .botao {
+    background: linear-gradient(135deg, #e74c6f, #c0395b);
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.produtos .botao:hover {
+    background: linear-gradient(135deg, #d63a5e, #b03252);
+    box-shadow: 0 4px 12px rgba(231, 76, 111, 0.3);
+}
+
+/* Filtro */
+.filtroInput {
+    margin-bottom: 1.5rem;
+}
+
+.filtroInput input {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.filtroInput input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.filtroInput input::placeholder {
+    color: #8aaac9;
+}
+
+/* Grid de produtos */
+.filtroParent {
+    margin: 1.5rem 0;
+}
+
+.filtro {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Cards de produtos */
+.produtos {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.produtos:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(74, 144, 217, 0.15);
+    border-color: rgba(74, 144, 217, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.produtos h2 {
+    color: #1a3a5c;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.8rem 0;
+    letter-spacing: -0.3px;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(74, 144, 217, 0.1);
+}
+
+.produtos p {
+    color: #3a5a7a;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.produtos p:first-of-type {
+    margin-top: 0;
+}
+
+.produtos p:last-of-type {
+    margin-bottom: 0.5rem;
+}
+
+.produtos .botao {
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+/* Mensagem de nenhum produto */
+.container > p:last-child {
+    text-align: center;
+    color: #5a7a9a;
+    font-style: italic;
+    padding: 3rem 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    border: 2px dashed rgba(74, 144, 217, 0.2);
+}
+
+/* Loading */
+.container > div:first-child:only-child {
+    text-align: center;
+    padding: 4rem 0;
+    color: #3a6a9a;
+    font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .container > div:first-child h1 {
+        font-size: 1.5rem;
+    }
+
+    .form {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .form h3 {
+        grid-column: 1;
+    }
+
+    .botao {
+        width: 100%;
+    }
+
+    .filtro {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .produtos {
+        padding: 1.2rem;
+    }
+
+    .container > div:first-child {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+    }
+
+    .container > div:first-child button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container > div:first-child h1 {
+        font-size: 1.2rem;
+    }
+
+    .produtos h2 {
+        font-size: 1rem;
+    }
+
+    .form input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .filtroInput input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.produtos {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e1edf9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a90d9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a80c9;
 }
